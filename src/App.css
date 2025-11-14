@@ -1,0 +1,129 @@
+.app {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 800px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.input-section {
+  margin-bottom: 30px;
+}
+
+.label {
+  display: block;
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.input {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  transition: border-color 0.3s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.language-section {
+  margin-bottom: 40px;
+}
+
+.language-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.language-button {
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.language-button:hover {
+  border-color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.language-button.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: transparent;
+}
+
+.greeting-display {
+  text-align: center;
+  padding: 40px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 15px;
+  color: white;
+}
+
+.greeting-text {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+.language-name {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 30px 20px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .greeting-text {
+    font-size: 2rem;
+  }
+
+  .language-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+}
