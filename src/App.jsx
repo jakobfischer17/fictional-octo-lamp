@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import { useAuth } from './auth/AuthContext'
 
 const greetings = {
   english: { name: 'English', text: 'Hello' },
@@ -19,13 +20,75 @@ const greetings = {
 function App() {
   const [selectedLanguage, setSelectedLanguage] = useState('english')
   const [userName, setUserName] = useState('')
+  const { user, loading, error, isAuthenticated, login, logout } = useAuth()
 
   const currentGreeting = greetings[selectedLanguage]
+
+  if (loading) {
+    return (
+      <div className="app">
+        <div className="container">
+          <div className="loading">Loading authentication...</div>
+        </div>
+      </div>
+    )
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <div className="app">
+        <div className="container">
+          <h1 className="title">Multi-Language Greeting App</h1>
+          <p className="subtitle">Secure authentication with EntraID</p>
+          
+          {error && (
+            <div className="error-message">
+              <strong>Error:</strong> {error}
+            </div>
+          )}
+          
+          <div className="auth-section">
+            <p className="auth-description">
+              Please sign in with your Microsoft account to use the greeting app.
+            </p>
+            <button onClick={login} className="login-button">
+              Sign in with Microsoft
+            </button>
+          </div>
+          
+          <div className="info-section">
+            <h3>About This App</h3>
+            <p>
+              This application uses <strong>PKCE (Proof Key for Code Exchange)</strong> authentication 
+              flow with Microsoft EntraID (Azure Active Directory) to provide secure access.
+            </p>
+            <ul>
+              <li>✓ Secure OAuth 2.0 authentication</li>
+              <li>✓ PKCE for enhanced security</li>
+              <li>✓ No client secrets exposed</li>
+              <li>✓ 12 languages supported</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="app">
       <div className="container">
-        <h1 className="title">Multi-Language Greeting App</h1>
+        <div className="header">
+          <div className="header-content">
+            <h1 className="title">Multi-Language Greeting App</h1>
+            <div className="user-info">
+              <span className="user-name">{user?.name || user?.email}</span>
+              <button onClick={logout} className="logout-button">
+                Sign Out
+              </button>
+            </div>
+          </div>
+        </div>
+        
         <p className="subtitle">Greet people in different languages!</p>
 
         <div className="input-section">

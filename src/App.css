@@ -15,6 +15,30 @@
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
+.header {
+  margin-bottom: 20px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-name {
+  font-size: 0.95rem;
+  color: #666;
+  font-weight: 500;
+}
+
 .title {
   font-size: 2.5rem;
   color: #333;
@@ -28,6 +52,102 @@
   color: #666;
   text-align: center;
   margin-bottom: 40px;
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #667eea;
+  padding: 40px;
+}
+
+.error-message {
+  background: #fee;
+  border: 2px solid #fcc;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 30px;
+  color: #c33;
+}
+
+.auth-section {
+  text-align: center;
+  padding: 40px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 15px;
+  margin-bottom: 30px;
+}
+
+.auth-description {
+  color: white;
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.login-button {
+  background: white;
+  color: #667eea;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.login-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.logout-button {
+  background: #fff;
+  color: #667eea;
+  border: 2px solid #667eea;
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.logout-button:hover {
+  background: #667eea;
+  color: white;
+}
+
+.info-section {
+  background: #f9f9f9;
+  border-radius: 15px;
+  padding: 30px;
+}
+
+.info-section h3 {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.info-section p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.info-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.info-section ul li {
+  color: #667eea;
+  font-weight: 500;
+  padding: 8px 0;
+  font-size: 1rem;
 }
 
 .input-section {
@@ -125,5 +245,14 @@
 
   .language-grid {
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+
+  .header-content {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .user-info {
+    justify-content: center;
   }
 }
