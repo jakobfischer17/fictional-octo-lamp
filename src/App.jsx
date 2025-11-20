@@ -1,4 +1,8 @@
 import { useState } from 'react'
+import { useIsAuthenticated, useMsal } from '@azure/msal-react'
+import SignInButton from './components/SignInButton'
+import SignOutButton from './components/SignOutButton'
+import UserProfile from './components/UserProfile'
 import './App.css'
 
 const greetings = {
@@ -19,14 +23,30 @@ const greetings = {
 function App() {
   const [selectedLanguage, setSelectedLanguage] = useState('english')
   const [userName, setUserName] = useState('')
+  const isAuthenticated = useIsAuthenticated()
+  const { accounts } = useMsal()
 
   const currentGreeting = greetings[selectedLanguage]
+  const authenticatedUserName = isAuthenticated && accounts[0] ? accounts[0].name : ''
 
   return (
     <div className="app">
       <div className="container">
+        <div className="auth-section">
+          {isAuthenticated ? (
+            <div className="auth-info">
+              <span className="user-name">Welcome, {authenticatedUserName}!</span>
+              <SignOutButton />
+            </div>
+          ) : (
+            <SignInButton />
+          )}
+        </div>
+
         <h1 className="title">Multi-Language Greeting App</h1>
         <p className="subtitle">Greet people in different languages!</p>
+
+        {isAuthenticated && <UserProfile />}
 
         <div className="input-section">
           <label htmlFor="name-input" className="label">
@@ -60,7 +80,7 @@ function App() {
         <div className="greeting-display">
           <div className="greeting-text">
             {currentGreeting.text}
-            {userName && `, ${userName}`}!
+            {(userName || authenticatedUserName) && `, ${userName || authenticatedUserName}`}!
           </div>
           <div className="language-name">
             in {currentGreeting.name}
