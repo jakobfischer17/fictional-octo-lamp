@@ -17,10 +17,13 @@
 
 .auth-section {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
   padding-bottom: 20px;
   border-bottom: 2px solid #f0f0f0;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .auth-info {
@@ -176,4 +179,117 @@
   .language-grid {
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   }
+}
+
+/* High Contrast Mode Styles - WCAG AAA Compliant */
+body.high-contrast .app {
+  background: #000;
+}
+
+body.high-contrast .container {
+  background: #000;
+  border: 3px solid #fff;
+  box-shadow: none;
+}
+
+body.high-contrast .auth-section {
+  border-bottom: 3px solid #fff;
+}
+
+body.high-contrast .user-name {
+  color: #fff;
+  font-weight: 700;
+}
+
+body.high-contrast .auth-button {
+  font-weight: 700;
+  border: 2px solid #fff;
+}
+
+body.high-contrast .auth-button.sign-in {
+  background: #ffff00;
+  color: #000;
+  border: 2px solid #000;
+}
+
+body.high-contrast .auth-button.sign-in:hover {
+  background: #ffff00;
+  color: #000;
+  transform: none;
+  box-shadow: none;
+}
+
+body.high-contrast .auth-button.sign-out {
+  background: #000;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+body.high-contrast .auth-button.sign-out:hover {
+  background: #000;
+  color: #fff;
+  transform: none;
+}
+
+body.high-contrast .title {
+  color: #fff;
+}
+
+body.high-contrast .subtitle {
+  color: #fff;
+}
+
+body.high-contrast .label {
+  color: #fff;
+  font-weight: 700;
+}
+
+body.high-contrast .input {
+  background: #fff;
+  color: #000;
+  border: 3px solid #000;
+  font-weight: 600;
+}
+
+body.high-contrast .input:focus {
+  border-color: #ffff00;
+  outline: 3px solid #ffff00;
+}
+
+body.high-contrast .language-button {
+  background: #000;
+  color: #fff;
+  border: 3px solid #fff;
+  font-weight: 700;
+}
+
+body.high-contrast .language-button:hover {
+  background: #fff;
+  color: #000;
+  border-color: #000;
+  transform: none;
+  box-shadow: none;
+}
+
+body.high-contrast .language-button.active {
+  background: #ffff00;
+  color: #000;
+  border: 3px solid #000;
+}
+
+body.high-contrast .greeting-display {
+  background: #fff;
+  color: #000;
+  border: 3px solid #000;
+}
+
+body.high-contrast .greeting-text {
+  color: #000;
+  font-weight: 900;
+}
+
+body.high-contrast .language-name {
+  color: #000;
+  font-weight: 700;
+  opacity: 1;
 }
