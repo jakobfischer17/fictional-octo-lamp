@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import './HighContrastToggle.css'
 
 function HighContrastToggle() {
@@ -31,17 +31,17 @@ function HighContrastToggle() {
     }
   }, [isHighContrast])
 
-  const toggleHighContrast = () => {
-    setIsHighContrast(!isHighContrast)
-  }
+  const toggleHighContrast = useCallback(() => {
+    setIsHighContrast((prev) => !prev)
+  }, [])
 
-  const handleKeyDown = (event) => {
+  const handleKeyDown = useCallback((event) => {
     // Handle Space and Enter keys for accessibility
     if (event.key === ' ' || event.key === 'Enter') {
       event.preventDefault() // Prevent page scroll on Space
       toggleHighContrast()
     }
-  }
+  }, [toggleHighContrast])
 
   return (
     <div className="high-contrast-toggle">
