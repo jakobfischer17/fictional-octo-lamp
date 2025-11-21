@@ -35,6 +35,14 @@ function HighContrastToggle() {
     setIsHighContrast(!isHighContrast)
   }
 
+  const handleKeyDown = (event) => {
+    // Handle Space and Enter keys for accessibility
+    if (event.key === ' ' || event.key === 'Enter') {
+      event.preventDefault() // Prevent page scroll on Space
+      toggleHighContrast()
+    }
+  }
+
   return (
     <div className="high-contrast-toggle">
       <label htmlFor="high-contrast-switch" className="toggle-label">
@@ -44,6 +52,7 @@ function HighContrastToggle() {
         id="high-contrast-switch"
         className={`toggle-switch ${isHighContrast ? 'active' : ''}`}
         onClick={toggleHighContrast}
+        onKeyDown={handleKeyDown}
         aria-label="Toggle high contrast mode"
         aria-pressed={isHighContrast}
         role="switch"

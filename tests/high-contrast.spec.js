@@ -166,6 +166,13 @@ test.describe('High Contrast Mode for Accessibility', () => {
     
     const body = page.locator('body');
     await expect(body).toHaveClass(/high-contrast/);
+    
+    // Press Enter to toggle back off
+    await page.keyboard.press('Enter');
+    
+    // Should be deactivated
+    await expect(toggleSwitch).toHaveAttribute('aria-pressed', 'false');
+    await expect(body).not.toHaveClass(/high-contrast/);
   });
 
   test('should have sufficient contrast ratios in high contrast mode', async ({ page }) => {
