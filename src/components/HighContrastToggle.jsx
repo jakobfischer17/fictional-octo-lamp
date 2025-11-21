@@ -3,9 +3,15 @@ import './HighContrastToggle.css'
 
 function HighContrastToggle() {
   const [isHighContrast, setIsHighContrast] = useState(() => {
-    // Load preference from localStorage on initial render
-    const saved = localStorage.getItem('highContrastMode')
-    return saved === 'true'
+    // Load preference from localStorage on initial render with error handling
+    try {
+      const saved = localStorage.getItem('highContrastMode')
+      return saved === 'true'
+    } catch (error) {
+      // localStorage might not be available (e.g., in SSR or private browsing)
+      console.warn('localStorage not available:', error)
+      return false
+    }
   })
 
   useEffect(() => {
@@ -16,8 +22,13 @@ function HighContrastToggle() {
       document.body.classList.remove('high-contrast')
     }
     
-    // Save preference to localStorage
-    localStorage.setItem('highContrastMode', isHighContrast.toString())
+    // Save preference to localStorage with error handling
+    try {
+      localStorage.setItem('highContrastMode', isHighContrast.toString())
+    } catch (error) {
+      // localStorage might not be available (e.g., in SSR or private browsing)
+      console.warn('Could not save to localStorage:', error)
+    }
   }, [isHighContrast])
 
   const toggleHighContrast = () => {

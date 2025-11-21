@@ -99,9 +99,6 @@ test.describe('High Contrast Mode for Accessibility', () => {
     const toggleSwitch = page.getByRole('switch', { name: /toggle high contrast mode/i });
     await toggleSwitch.click();
     
-    // Wait for styles to be applied
-    await page.waitForTimeout(100);
-    
     // Check that body has high-contrast class
     const body = page.locator('body');
     await expect(body).toHaveClass(/high-contrast/);
@@ -177,8 +174,9 @@ test.describe('High Contrast Mode for Accessibility', () => {
     const toggleSwitch = page.getByRole('switch', { name: /toggle high contrast mode/i });
     await toggleSwitch.click();
     
-    // Wait for styles to be applied
-    await page.waitForTimeout(100);
+    // Wait for high contrast class to be applied
+    const body = page.locator('body');
+    await expect(body).toHaveClass(/high-contrast/);
     
     // Check container has proper border and background
     const container = page.locator('.container');
