@@ -1,0 +1,77 @@
+.high-contrast-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toggle-label {
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 600;
+  margin: 0;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 50px;
+  height: 26px;
+  background-color: #ccc;
+  border: none;
+  border-radius: 13px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  padding: 0;
+}
+
+.toggle-switch:hover {
+  background-color: #bbb;
+}
+
+.toggle-switch.active {
+  background-color: #667eea;
+}
+
+.toggle-switch.active:hover {
+  background-color: #5568d3;
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 22px;
+  height: 22px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+  display: block;
+}
+
+.toggle-switch.active .toggle-slider {
+  transform: translateX(24px);
+}
+
+/* High contrast mode styles for the toggle itself */
+body.high-contrast .toggle-label {
+  color: #fff;
+}
+
+body.high-contrast .toggle-switch {
+  background-color: #000;
+  border: 2px solid #fff;
+}
+
+body.high-contrast .toggle-switch.active {
+  background-color: #ffff00;
+  border: 2px solid #000;
+}
+
+body.high-contrast .toggle-slider {
+  background-color: #fff;
+  border: 2px solid #000;
+}
+
+body.high-contrast .toggle-switch.active .toggle-slider {
+  background-color: #000;
+  border: 2px solid #fff;
+}

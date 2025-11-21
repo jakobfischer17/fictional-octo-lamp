@@ -3,6 +3,7 @@ import { useIsAuthenticated, useMsal } from '@azure/msal-react'
 import SignInButton from './components/SignInButton'
 import SignOutButton from './components/SignOutButton'
 import UserProfile from './components/UserProfile'
+import HighContrastToggle from './components/HighContrastToggle'
 import './App.css'
 
 const greetings = {
@@ -33,6 +34,7 @@ function App() {
     <div className="app">
       <div className="container">
         <div className="auth-section">
+          <HighContrastToggle />
           {isAuthenticated ? (
             <div className="auth-info">
               <span className="user-name">Welcome, {authenticatedUserName}!</span>

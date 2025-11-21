@@ -20,3 +20,14 @@ body {
 #root {
   width: 100%;
 }
+
+/* High Contrast Mode Styles */
+body.high-contrast {
+  background: #000;
+}
+
+body.high-contrast * {
+  /* Disable animations and transitions in high contrast mode for better accessibility */
+  animation: none !important;
+  transition: none !important;
+}
