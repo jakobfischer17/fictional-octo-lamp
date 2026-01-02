@@ -3,6 +3,7 @@ import { useIsAuthenticated, useMsal } from '@azure/msal-react'
 import SignInButton from './components/SignInButton'
 import SignOutButton from './components/SignOutButton'
 import UserProfile from './components/UserProfile'
+import FontSizeSlider from './components/FontSizeSlider'
 import './App.css'
 
 const greetings = {
@@ -45,6 +46,8 @@ function App() {
 
         <h1 className="title">Multi-Language Greeting App</h1>
         <p className="subtitle">Greet people in different languages!</p>
+
+        <FontSizeSlider />
 
         {isAuthenticated && <UserProfile />}
 
